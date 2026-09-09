@@ -1,0 +1,7 @@
+.app {
+    background-color: var(--body-background);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+

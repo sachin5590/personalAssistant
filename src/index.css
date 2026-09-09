@@ -1,5 +1,55 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: light dark;
+
+  --body-background: light-dark(#F8F9FA, #0F172A);
+  --surface-background: light-dark(#FFFFFF, #1E293B);
+
+  --success-bg: light-dark(#D1FAE5, #064E3B);
+  --success-text: light-dark(#059669, #34D399);
+
+  --urgent-background: light-dark(#FEF3C7, #451A03);
+  --urgent-text: light-dark(#B45309, #FBBF24);
+
+  --delete-background: light-dark(#FEE2E2, #450A0A);
+  --delete-text: light-dark(#BE123C, #F87171);
+
+  --title-text: light-dark(#111827, #FFFFFF);
+  --title-weight: 600;
+  --text: light-dark(#4B5563, #9CA3AF);
+  --text-weight: light-dark(400, 400);
+  --link-text: light-dark(#2563EB, #38BDF8);
+  --link-text-hover: light-dark(#1E40AF, #BAE6FD);
+  --text-primary: light-dark(#1F2937, #F1F5F9);
+  --text-secondary: light-dark(#6B7280, #9CA3AF);
+  --border-color: light-dark(#E5E7EB, #334155);
+
+  --primary-button: light-dark(#2563EB, #38BDF8);
+  --primary-button-text: light-dark(#FFFFFF, #1F2937);
+  --primary-button-hover: light-dark(#1E40AF, #BAE6FD);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: var(--body-background);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

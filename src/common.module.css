@@ -1,0 +1,117 @@
+.page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.title {
+    color: var(--title-text);
+    font-size: 1.35rem;
+    font-weight: var(--title-weight);
+}
+.card {
+    background-color: var(--surface-background);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+}
+.task-list {
+    margin-top: 1rem;
+    flex: 1;
+    overflow-y: auto;
+}
+.task {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    background-color: var(--surface-background);
+}
+.task-item {
+    margin-top: 0.25rem;
+    display: flex;
+    justify-content: space-between;
+}
+.task-title {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: var(--title-weight);
+}
+pre {
+    text-wrap: wrap;
+}
+.primaryButton {
+    background-color: var(--primary-button);
+    color: var(--primary-button-text);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+.primaryButton:hover {
+    background-color: var(--primary-button-hover);
+}
+.toast-success {
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    padding: 8px 15px;
+    color: var(--success-text);
+    background-color: var(--success-bg);
+}
+.toast-error {
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    color: var(--urgent-text);
+    background-color: var(--urgent-background);
+}
+.editIcon {
+    color: var(--text);
+    transition: color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+.editIcon:hover {
+    transform: scale(1.1);
+}
+.deleteIcon {
+    color: var(--delete-text);
+    transition: color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+.deleteIcon:hover {
+    transform: scale(1.1);
+}
+
+/* --- FORM ELEMENTS --- */
+.form-group {
+    margin-bottom: 16px;
+}
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+.form-input {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: var(--body-background);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+.form-input:focus {
+    outline: 2px solid var(--primary-button);
+    outline-offset: -1px;
+}
+.input-row {
+    display: flex;
+    gap: 16px;
+}
+.input-row > div {
+    flex: 1;
+}
