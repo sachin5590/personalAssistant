@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Archive from './pages/archive/Archive';
 import Today from './pages/today/Today';
 import Layout from './layout/Layout';
