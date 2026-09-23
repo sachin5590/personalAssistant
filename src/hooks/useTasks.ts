@@ -40,8 +40,8 @@ const useTasks = () => {
     };
 
     const isTaskToBeCompletedToday = (task: Task) => {
-        const formattedDate = new Date().toLocaleDateString('en-CA'); 
-        
+        const formattedDate = new Date().toLocaleDateString('en-CA');
+
         if (formattedDate !== task.date) return false;
 
         if (!task.time) return true;
@@ -53,6 +53,14 @@ const useTasks = () => {
         return minutes !== new Date().getMinutes();
     };
 
+    const isTaskArchived = (task: Task): boolean => {
+        const currentTimeStamp = new Date().getTime();
+
+        const taskTimeStamp = new Date(`${task.date}T${task.time?.trim() ?? '00:00'}`).getTime();
+
+        return currentTimeStamp > taskTimeStamp;
+    };
+
     const getTasksForToday = () => {
         return tasks
             .filter((task) => isTaskToBeCompletedToday(task))
@@ -60,7 +68,7 @@ const useTasks = () => {
     };
 
     const getArchivedTasks = () => {
-        return tasks.filter((task) => !isTaskToBeCompletedToday(task))
+        return tasks.filter((task) => isTaskArchived(task))
         .sort(sortFn);
     }
 

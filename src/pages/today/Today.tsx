@@ -29,7 +29,6 @@ const Today = () => {
     if (['default', 'denied'].includes(permission)) {
         requestPermission();
     }
-    console.log('tasks: ', tasks);
 
     return (
         <div className={commonStyles.page}>

@@ -33,7 +33,6 @@ function App() {
   } else {
     content = <Today />;
   }
-  console.log('window.innerWidth: ', window.innerWidth);
 
   return (
     <TaskProvider>

@@ -26,7 +26,6 @@ const TaskList = ({
                     values={taskToUpdate}
                     handleClose={() => setTaskToUpdate(null)}
                     handleSubmit={(task: Task) => {
-                        console.log('task: ', task);
                         setTaskToUpdate(null);
                         updateTask(task);
                     }}
