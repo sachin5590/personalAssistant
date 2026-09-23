@@ -55,8 +55,7 @@ const useTasks = () => {
 
     const isTaskArchived = (task: Task): boolean => {
         const currentTimeStamp = new Date().getTime();
-
-        const taskTimeStamp = new Date(`${task.date}T${task.time?.trim() ?? '00:00'}`).getTime();
+        const taskTimeStamp = new Date(`${task.date}T${task.time?.trim() ?? '23:59'}`).getTime();
 
         return currentTimeStamp > taskTimeStamp;
     };
