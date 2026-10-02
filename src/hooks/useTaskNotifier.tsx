@@ -5,7 +5,9 @@ import { Permission } from "./useNotification";
 const useTaskNotifier = (
     tasks: Task[],
     permission: Permission,
-    fireNotification: (title: string, body: string) => void
+    registration: null | ServiceWorkerRegistration,
+    fireNotification: (title: string, body: string) => void,
+    scheduleNotification: (title: string, body: string, delayInMilliseconds: number ) => void
 ) => {
   const notifiedTasks = useRef(new Set());
 
@@ -19,6 +21,14 @@ const useTaskNotifier = (
       if (notifiedTasks.current.has(task.id)) return;
 
       const taskTime = new Date(`${task.date}T${task.time ?? '00:00'}`).getTime();
+      if ('TimestampTrigger' in window && registration?.showNotification) {
+        scheduleNotification(
+          `Task Due: ${task.title}`,
+          task.note || 'It is time to complete your task!',
+          taskTime
+        );
+      }
+
       const currentTime = Date.now();
       const timeUntilTask = taskTime - currentTime;
 

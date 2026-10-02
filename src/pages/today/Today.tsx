@@ -15,7 +15,7 @@ const Today = () => {
     } = useTasks();
 
     const {
-        permission, fireNotification, requestPermission
+        permission, registration, fireNotification, requestPermission, scheduleNotification
     } = useNotification();
 
     const [openAddTaskModal, setOpenAddTaskModal] = useState(false);
@@ -24,7 +24,7 @@ const Today = () => {
         return getTasksForToday()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentTasks]);
-    useTaskNotifier(tasks, permission, fireNotification);
+    useTaskNotifier(tasks, permission, registration, fireNotification, scheduleNotification);
 
     if (['default', 'denied'].includes(permission)) {
         requestPermission();

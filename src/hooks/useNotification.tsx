@@ -4,12 +4,27 @@ export type Permission = 'default' | 'denied' | 'granted';
 
 const useNotification = () => {
     const [permission, setPermission] = useState<Permission>(Notification.permission);
+    const [registration, setRegistration] = useState<ServiceWorkerRegistration | null>(null);
 
     useEffect(() => {
         if ('Notification' in window) {
             setPermission(Notification.permission);
         }
+        fetchRegistration();
     }, []);
+
+    const fetchRegistration = async (): Promise<ServiceWorkerRegistration | null> => {
+        try {
+            if (registration) return registration;
+
+            const readyRegistration = await navigator.serviceWorker.ready;
+            setRegistration(readyRegistration);
+            return registration;
+        } catch (err) {
+            console.error('Service worker error');
+            return registration;
+        }
+    };
 
     const requestPermission = async () => {
         if (!('Notification' in window)) {
@@ -22,6 +37,17 @@ const useNotification = () => {
         setPermission(result);
     };
 
+    const scheduleNotification = (title: string, body: string, delayInMilliseconds: number) => {
+        if (!registration) return null;
+
+        const scheduledOptions = {
+            icon: '/your-app-icon.png',
+            body,
+            showTrigger: new TimestampTrigger(delayInMilliseconds)
+        };
+        registration.showNotification(title, scheduledOptions);
+    };
+
     const fireNotification = async (title: string, body: string) => {
         if (permission !== 'granted') {
             console.warn('Notification permission not granted.');
@@ -29,8 +55,7 @@ const useNotification = () => {
         }
 
         if ('serviceWorker' in navigator) {
-            // 2. Android Mobile & Modern Desktop approach
-            const registration = await navigator.serviceWorker.ready;
+            if (!registration) return null;
             registration.showNotification(title, {
                 icon: '/your-app-icon.png',
                 body
@@ -43,7 +68,7 @@ const useNotification = () => {
         }
     }
 
-    return { permission, fireNotification, requestPermission };
+    return { permission, registration, fireNotification, requestPermission, scheduleNotification };
 
 };
 export default useNotification;
