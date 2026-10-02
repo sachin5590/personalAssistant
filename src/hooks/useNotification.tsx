@@ -22,16 +22,25 @@ const useNotification = () => {
         setPermission(result);
     };
 
-    const fireNotification = (title: string, body: string) => {
+    const fireNotification = async (title: string, body: string) => {
         if (permission !== 'granted') {
             console.warn('Notification permission not granted.');
             return;
         }
 
-        new Notification(title, {
-            icon: '/your-app-icon.png',
-            body
-        });
+        if ('serviceWorker' in navigator) {
+            // 2. Android Mobile & Modern Desktop approach
+            const registration = await navigator.serviceWorker.ready;
+            registration.showNotification(title, {
+                icon: '/your-app-icon.png',
+                body
+            });
+        } else {
+            new Notification(title, {
+                icon: '/your-app-icon.png',
+                body
+            });
+        }
     }
 
     return { permission, fireNotification, requestPermission };
