@@ -41,7 +41,7 @@ const useNotification = () => {
         if (!registration) return null;
 
         const scheduledOptions = {
-            icon: '/your-app-icon.png',
+            icon: '/app-notification.png',
             body,
             showTrigger: new TimestampTrigger(delayInMilliseconds)
         };
@@ -57,12 +57,12 @@ const useNotification = () => {
         if ('serviceWorker' in navigator) {
             if (!registration) return null;
             registration.showNotification(title, {
-                icon: '/your-app-icon.png',
+                icon: '/app-notification.png',
                 body
             });
         } else {
             new Notification(title, {
-                icon: '/your-app-icon.png',
+                icon: '/app-notification.png',
                 body
             });
         }
