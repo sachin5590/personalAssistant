@@ -1,11 +1,13 @@
 import { createContext, useState } from "react";
 
+export type ChecklistType = { title: string, value: boolean };
 export interface Task {
     id: string;
     title: string;
     date: string;
     time?: string;
     note?: string;
+    checklists?: Array<ChecklistType>;
 }
 interface TaskContextType {
     tasks: Task[];

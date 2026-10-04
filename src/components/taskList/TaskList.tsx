@@ -5,6 +5,7 @@ import useTasks from "../../hooks/useTasks";
 import DeleteIcon from "../../svgs/delete";
 import EditIcon from "../../svgs/Edit";
 import CreateNewTaskModal from "../createNewTaskModal/CreateNewTaskModal";
+import Checklists from "../createNewTaskModal/Checklists";
 
 const TaskList = ({
     tasks
@@ -42,6 +43,14 @@ const TaskList = ({
                     <div className={commonStyles['task-item']}>
                         <div>
                             {task.note && <pre>{task.note}</pre>}
+                            <Checklists
+                                showTitleAsLabel={true}
+                                checklists={task.checklists ?? []}
+                                onSubmit={(checklists) => {
+                                    task.checklists = checklists;
+                                    updateTask(task);
+                                }}
+                            />
                         </div>
                         <div style={{ minWidth: '110px' }}>
                             <span
