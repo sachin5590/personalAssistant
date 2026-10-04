@@ -49,6 +49,6 @@ const useTaskNotifier = (
     return () => {
       timeoutIds.forEach((id) => clearTimeout(id));
     };
-  }, [tasks, permission, fireNotification]);
+  }, [tasks, permission, registration?.showNotification, fireNotification]);
 }
 export default useTaskNotifier;

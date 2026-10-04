@@ -1,5 +1,3 @@
-import { useState } from "react";
-import Modal from "../modal/Modal";
 import commonStyles from '../../common.module.css';
 import { ChecklistType } from "../../contexts/TaskContext";
 

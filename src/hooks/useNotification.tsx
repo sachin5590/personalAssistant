@@ -11,6 +11,7 @@ const useNotification = () => {
             setPermission(Notification.permission);
         }
         fetchRegistration();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const fetchRegistration = async (): Promise<ServiceWorkerRegistration | null> => {
