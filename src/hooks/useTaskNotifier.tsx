@@ -49,6 +49,7 @@ const useTaskNotifier = (
     return () => {
       timeoutIds.forEach((id) => clearTimeout(id));
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tasks, permission, registration?.showNotification, fireNotification]);
 }
 export default useTaskNotifier;
